@@ -30,7 +30,7 @@ To run this project
 ```bash
   yarn dev
 ```
-To access this project after run it you can access the url provided by vitte or make click to [localhost](http://localhost:5173)
+To access this project after run it, you can access the url provided by vitte or make click to [localhost](http://localhost:5173)
 
 ## Extra info
 If you want to center horizontally you have to access the file *'style.js'* which is situated in *'page/main'* and uncomment the commented lines in main.
