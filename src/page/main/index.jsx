@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
 import style from './style';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { display } from '@mui/system';
 
 function CatFacts() {
   const [fact, setFact] = useState('');
@@ -19,7 +26,6 @@ function CatFacts() {
       });
   };
   const getGif = (search) => {
-    console.log(search);
     axios
       .get(
         `${import.meta.env.VITE_GIF_API}?api_key=${
@@ -36,21 +42,64 @@ function CatFacts() {
   };
   return (
     <div style={style.main}>
-      {!fact ? (
-        <h1>Welcome to cat facts please press the button bellow </h1>
-      ) : (
-        ''
+      {!fact && (
+        <CardActions sx={{ margin: 'auto' }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              getFact();
+            }}
+          >
+            Get another fact
+          </Button>
+        </CardActions>
       )}
-      <button style={style.button} onClick={getFact}>
-        {!fact ? 'Get Cat Fact' : 'Get Another Fact'}
-      </button>
-
-      {fact && gifUrl && (
-        <div style={style.content}>
-          <img src={gifUrl} alt={fact} style={style.image} />
-
-          <p style={style.text}>{fact}</p>
-        </div>
+      {fact && (
+        <Card
+          sx={{
+            maxWidth: 900,
+            maxHeight: 300,
+            display: 'flex',
+            flexDirection: 'column',
+            margin: 'auto',
+            boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
+          }}
+        >
+          <Card
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+            }}
+          >
+            <CardMedia
+              sx={{ objectFit: 'fill' }}
+              component="img"
+              image={gifUrl}
+              title={fact}
+            />
+            <CardContent
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              <Typography variant="body2" color="text.secondary">
+                {fact}
+              </Typography>
+            </CardContent>
+          </Card>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              getFact();
+            }}
+          >
+            Get another fact
+          </Button>
+        </Card>
       )}
     </div>
   );
