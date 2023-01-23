@@ -43,7 +43,7 @@ function CatFacts() {
   return (
     <div style={style.main}>
       {!fact && (
-        <CardActions sx={{ margin: 'auto' }}>
+        <CardActions>
           <Button
             variant="contained"
             size="large"
@@ -62,7 +62,7 @@ function CatFacts() {
             maxHeight: 300,
             display: 'flex',
             flexDirection: 'column',
-            margin: 'auto',
+            
             boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
           }}
         >

@@ -2,9 +2,9 @@ const styles = {
   main: {
     display: 'flex',
     alignItems: 'center',
-    /*    justifyContent: 'center',
-    width: '100%',
-    height: '98vh', */
+    /* justifyContent: 'center',
+    width: '100%', */
+    height: '98vh',
   },
 };
 
